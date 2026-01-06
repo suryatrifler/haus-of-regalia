@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Avenir LT Light";
+  src: local("Avenir LT Std 35 Light"), local("Avenir LT Light");
+  font-weight: 400;
+  font-style: normal;
+}

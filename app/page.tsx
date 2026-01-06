@@ -2,21 +2,49 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Inter, Playfair_Display } from "next/font/google";
+import type { Variants } from "framer-motion";
+import { Inter, Playfair_Display, Montserrat } from "next/font/google";
 import Image from "next/image";
 
 /* ---------------- FONTS ---------------- */
 
-const sans = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const serif = Playfair_Display({
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
 });
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-nav",
+});
 
-/* ================= TYPES ================= */
+/* ---------------- TYPES ---------------- */
 
 type CurtainProps = {
   onComplete: () => void;
+};
+
+/* ---------------- NAV ANIMATION ---------------- */
+
+const navContainer: Variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { delay: 0.9, staggerChildren: 0.08 },
+  },
+};
+
+const navItem: Variants = {
+  hidden: { opacity: 0, y: 6 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
 };
 
 /* ================= MAIN PAGE ================= */
@@ -32,25 +60,21 @@ export default function ArchitecturePortfolio() {
 
   return (
     <>
-      {/* GLOBAL RESET & PREMIUM STYLES */}
+      {/* GLOBAL RESET */}
       <style jsx global>{`
         html,
         body {
           margin: 0;
           padding: 0;
           overflow-x: hidden;
-          background-color: #fafafa;
-        }
-        ::selection {
-          background: #000;
-          color: #fff;
+          background-color: #faf0ee;
         }
       `}</style>
 
       <main
-        className={`${sans.variable} ${serif.variable} font-sans bg-[#fafafa] min-h-screen text-[#1a1a1a]`}
+        className={`${inter.variable} ${playfair.variable} ${montserrat.variable} min-h-screen`}
       >
-        {/* FIRST CURTAIN */}
+        {/* CURTAINS */}
         {showFirstCurtain && (
           <InitialCurtain
             onComplete={() => {
@@ -62,187 +86,179 @@ export default function ArchitecturePortfolio() {
           />
         )}
 
-        {/* SECOND CURTAIN */}
         {showSecondCurtain && (
           <CurtainReveal onComplete={() => setShowContent(true)} />
         )}
 
-        {/* PAGE CONTENT */}
-        <div
-          className={`transition-opacity duration-1000 ${
-            showContent ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <Header />
-
-          <div className="max-w-[1400px] mx-auto px-6 md:px-12 pb-24">
-            <ProjectGrid />
-          </div>
-        </div>
+        {/* CONTENT */}
+        {showContent && (
+          <>
+            <Header />
+            <HeroSlider />
+          </>
+        )}
       </main>
     </>
   );
 }
 
-/* ================= ANIMATION COMPONENTS ================= */
+/* ================= CURTAINS ================= */
 
-const InitialCurtain = ({ onComplete }: CurtainProps) => {
+function InitialCurtain({ onComplete }: CurtainProps) {
   return (
     <motion.div
-      className="fixed top-0 left-0 w-full h-[120vh] z-[10000] overflow-hidden bg-black"
+      className="fixed top-0 left-0 w-full h-[120vh] z-[10000] bg-black"
       initial={{ x: "-100%" }}
       animate={{ x: "0%" }}
-      transition={{
-        duration: 1.4,
-        ease: [0.76, 0, 0.24, 1],
-      }}
+      transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1] }}
       onAnimationComplete={onComplete}
     >
       <Image
         src="/cover-final.jpg"
-        alt="Loading Curtain"
+        alt=""
         fill
         priority
-        className="object-cover opacity-90"
+        className="object-cover"
       />
     </motion.div>
   );
-};
+}
 
-const CurtainReveal = ({ onComplete }: CurtainProps) => {
+function CurtainReveal({ onComplete }: CurtainProps) {
   return (
     <motion.div
-      className="fixed top-0 left-0 w-full h-[120vh] z-[9999] overflow-hidden bg-black"
+      className="fixed top-0 left-0 w-full h-[120vh] z-[9999] bg-black"
       initial={{ x: "0%" }}
       animate={{ x: "-100%" }}
-      transition={{
-        duration: 2.4,
-        ease: [0.4, 0, 0.2, 1],
-      }}
+      transition={{ duration: 2.4, ease: [0.4, 0, 0.2, 1] }}
       onAnimationComplete={onComplete}
     >
       <Image
         src="/cover-final.jpg"
-        alt="Reveal Curtain"
+        alt=""
         fill
         priority
-        className="object-cover opacity-90"
+        className="object-cover"
       />
     </motion.div>
   );
-};
+}
 
 /* ================= HEADER ================= */
 
-const Header = () => (
-  <header className="w-full bg-[#F8EEEC] pt-12 pb-12 mb-24 md:mb-32">
-    <div className="flex flex-col items-center w-full px-4 md:px-0">
-      <div className="relative w-full h-[120px] md:h-[277px] mb-8">
-        <Image
-          src="/logo-final.jpg"
-          alt="Haus of Regalia"
-          fill
-          className="object-contain"
-          priority
-        />
-      </div>
+function Header() {
+  return (
+    <header className="w-full bg-[#FAF0EE] h-[277px]">
+      <div className="h-full flex flex-col items-center pt-12 pb-10">
+        {/* LOGO */}
+        <div className="relative w-full h-[200px]">
+          <Image
+            src="/logo-final.jpg"
+            alt=""
+            fill
+            priority
+            className="object-contain"
+          />
+        </div>
 
-      <nav className="w-full">
-        <ul className="flex flex-wrap justify-center items-center gap-y-4 text-xs md:text-sm tracking-[0.2em] text-gray-800 font-medium">
-          {[
-            "HOME",
-            "PORTFOLIO",
-            "PUBLICATIONS",
-            "INTERIORS",
-            "ABOUT",
-            "NEWS",
-            "CONTACT",
-          ].map((item, index, array) => (
-            <li key={item} className="flex items-center">
-              <a
-                href="#"
-                className="relative hover:text-black transition-colors duration-300"
+        {/* NAV */}
+        <motion.nav
+          className="w-[980px] h-[35px] mt-8 mx-auto"
+          variants={navContainer}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.ul className="flex justify-between h-full">
+            {[
+              "HOME",
+              "PORTFOLIO",
+              "PUBLICATIONS",
+              "INTERIORS",
+              "ABOUT",
+              "NEWS",
+              "CONTACT",
+            ].map((item, index, array) => (
+              <motion.li
+                key={item}
+                variants={navItem}
+                className="flex items-center h-full uppercase"
+                style={{
+                  fontFamily: "var(--font-nav)",
+                  fontSize: "15px",
+                  fontWeight: 400,
+                  paddingLeft: "10px",
+                  paddingRight: "10px",
+                  color: "rgb(3,3,3)",
+                  letterSpacing: "0.12em",
+                }}
               >
                 {item}
-                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-black transition-all duration-300 w-full opacity-0 hover:opacity-100"></span>
-              </a>
+                {index !== array.length - 1 && (
+                  <span
+                    style={{ marginLeft: "20px", color: "#bdbdbd" }}
+                  >
+                    |
+                  </span>
+                )}
+              </motion.li>
+            ))}
+          </motion.ul>
+        </motion.nav>
+      </div>
+    </header>
+  );
+}
 
-              {index !== array.length - 1 && (
-                <span className="px-12 text-gray-400 font-light select-none">
-                  |
-                </span>
-              )}
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </div>
-  </header>
-);
+/* ================= HERO SLIDER (STABLE) ================= */
 
-/* ================= PROJECT GRID ================= */
+const slides = [
+  "/cover-final.jpg",
+  "/cover-final.jpg",
+  "/cover-final.jpg",
+];
 
-const ProjectGrid = () => {
-  const projects = [
-    {
-      id: 1,
-      title: "The Concrete Void",
-      location: "Hyderabad",
-      img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
-      aspect: "aspect-[3/4]",
-    },
-    {
-      id: 2,
-      title: "Azure Villa",
-      location: "Vizag Coast",
-      img: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b",
-      aspect: "aspect-[16/9]",
-    },
-    {
-      id: 3,
-      title: "Stone Residence",
-      location: "Bangalore",
-      img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0",
-      aspect: "aspect-square",
-    },
+function HeroSlider() {
+  const slides = [
+    "/slide-1.jpg",
+    "/slide-2.jpg",
+    "/slide-3.jpg",
   ];
 
-  return (
-    <section className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
-      {projects.map((p, index) => (
-        <div
-          key={p.id}
-          className={`group cursor-pointer ${
-            index % 2 === 1 ? "md:mt-24" : ""
-          }`}
-        >
-          <div
-            className={`relative w-full ${p.aspect} bg-gray-200 overflow-hidden mb-6`}
-          >
-            <Image
-              src={p.img}
-              alt={p.title}
-              fill
-              className="object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
-          </div>
+  const [index, setIndex] = useState(0);
 
-          <div className="flex justify-between items-baseline border-b border-gray-300 pb-3 group-hover:border-black transition-colors duration-500">
-            <h3
-              className={`text-2xl md:text-3xl ${serif.className} text-gray-900`}
-            >
-              {p.title}
-            </h3>
-            <span className="text-xs uppercase tracking-widest text-gray-400 group-hover:text-black transition-colors">
-              0{index + 1}
-            </span>
-          </div>
-          <p className="mt-3 text-sm tracking-wide text-gray-500 uppercase">
-            {p.location}
-          </p>
-        </div>
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % slides.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <section
+      style={{
+        position: "relative",
+        width: "100vw",
+        height: "80vh",
+        overflow: "hidden",
+      }}
+    >
+      {slides.map((src, i) => (
+        <img
+          key={i}
+          src={src}
+          alt=""
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            opacity: i === index ? 1 : 0,
+            transition: "opacity 1.2s ease-in-out",
+          }}
+        />
       ))}
     </section>
   );
-};
+}
