@@ -20,10 +20,10 @@ const fadeUp: Variants = {
 const projects = [
   {
     id: "01",
-    title: "Mozhi",
+    title: "The BeachSide",
     description:
       "A house of conversations in the heart of Trivandrum city for a family of four.",
-    image: "/slide-1.jpg",
+    image: "/projects/project-1/cover.jpg",
   },
   {
     id: "02",
