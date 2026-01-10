@@ -2,7 +2,7 @@ import React from "react";
 
 export default function HomeFooter() {
   return (
-    <footer className="mt-28 border-t border-neutral-300 bg-[#faf0ee]">
+    <footer className="mt-28 border-t border-[#835C57]-300 bg-[#faf0ee]">
       <div className="max-w-[1200px] mx-auto px-24 pt-20 pb-28">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
           
@@ -16,7 +16,7 @@ export default function HomeFooter() {
             </h3>
 
             <div
-              className="text-[13px] leading-[1.6] text-neutral-900 space-y-3"
+              className="text-[13px] leading-[1.6] text-[#835C57]-900 space-y-3"
               style={{ fontFamily: "var(--font-inter)" }}
             >
               <p>Phone : 9744999050, 81292 06164</p>
@@ -53,7 +53,7 @@ export default function HomeFooter() {
                   bg-[#1877F2] 
                   transition-all duration-300 
                   origin-bottom 
-                  group-hover:rotate-[35deg]
+                  group-hover:rotate-[25deg]
                 "></span>
 
                 {/* 2. ICON CONTAINER (Relative, sits on top) */}
@@ -92,7 +92,7 @@ export default function HomeFooter() {
                   bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888]
                   transition-all duration-300 
                   origin-bottom 
-                  group-hover:rotate-[35deg]
+                  group-hover:rotate-[25deg]
                 "></span>
 
                 {/* 2. ICON CONTAINER */}
@@ -125,7 +125,7 @@ export default function HomeFooter() {
                   bg-[#E60023] 
                   transition-all duration-300 
                   origin-bottom 
-                  group-hover:rotate-[35deg]
+                  group-hover:rotate-[25deg]
                 "></span>
 
                 {/* 2. ICON CONTAINER */}
@@ -167,7 +167,7 @@ export default function HomeFooter() {
                 placeholder="Name"
                 className="
                   col-span-1
-                  bg-black text-white
+                  bg-[#835C57] text-[#FAF0EE]
                   px-3.5 py-2
                   text-[12px]
                   outline-none
@@ -183,7 +183,7 @@ export default function HomeFooter() {
                 placeholder="Message"
                 className="
                   col-span-1 row-span-2
-                  bg-black text-white
+                  bg-[#835C57] text-[#FAF0EE]
                   px-3.5 py-2
                   text-[12px]
                   outline-none resize-none
@@ -200,7 +200,7 @@ export default function HomeFooter() {
                 placeholder="Email"
                 className="
                   col-span-1
-                  bg-black text-white
+                  bg-[#835C57] text-[#FAF0EE]
                   px-3.5 py-2
                   text-[12px]
                   outline-none
@@ -216,7 +216,7 @@ export default function HomeFooter() {
                 <button
                   type="submit"
                   className="
-                    bg-black text-white
+                    bg-[#835C57] text-[#FAF0EE]
                     px-8 py-2
                     text-[11.5px] uppercase tracking-[0.18em]
                     transition-colors

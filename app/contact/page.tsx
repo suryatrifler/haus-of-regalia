@@ -1,3 +1,13 @@
-export default function PortfolioPage() {
-  return <main className="min-h-screen">{/* portfolio content */}</main>;
+"use client";
+
+import ContactMap from "@/app/components/contact/ContactMap";
+import ContactInfo from "@/app/components/contact/ContactInfo";
+
+export default function ContactPage() {
+  return (
+    <>
+      <ContactMap />
+      <ContactInfo />
+    </>
+  );
 }

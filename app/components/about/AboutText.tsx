@@ -22,7 +22,7 @@ export default function AboutText() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="text-sm leading-8 text-neutral-700"
+        className="text-sm leading-8 text-[#835C57]-700"
       >
         The practice believes that architecture must emerge
         organically from its surroundings. Each project is

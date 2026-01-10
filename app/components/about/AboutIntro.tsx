@@ -48,7 +48,7 @@ export default function AboutIntro() {
           culture, and human experience.
         </h1>
 
-        <p className="text-sm leading-7 text-neutral-700">
+        <p className="text-sm leading-7 text-[#835C57]-700">
           ARK Architecture Studio is an architectural and interior
           design practice based in Trivandrum and Bangalore.
           Founded in 2018, the studio explores spatial narratives

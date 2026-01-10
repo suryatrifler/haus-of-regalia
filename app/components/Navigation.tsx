@@ -55,7 +55,7 @@ export default function Navigation() {
               fontSize: "15px",
               fontWeight: 400,
               letterSpacing: "0.14em",
-              color: "rgb(20,20,20)",
+              color: "#835C57",
             }}
           >
             {/* LINK */}

@@ -30,7 +30,7 @@ export default function AboutPreview() {
           About
         </h2>
 
-        <p className="text-sm text-neutral-700 leading-7 mb-8">
+        <p className="text-sm text-[#835C57]-700 leading-7 mb-8">
           ARK Architecture Studio is an architectural and interior
           design firm based in Trivandrum and Bangalore, founded in
           2018. ARK Architects are making waves in design through

@@ -8,8 +8,8 @@ export default function ShareDialog() {
   if (!isOpen || !url) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-      <div className="bg-white p-10 w-[500px] relative">
+    <div className="fixed inset-0 bg-[#835C57]/40 flex items-center justify-center z-50">
+      <div className="bg-[#FAF0EE] p-10 w-[500px] relative">
         <button
           onClick={close}
           className="absolute top-4 right-4 text-xl"
@@ -33,7 +33,7 @@ export default function ShareDialog() {
           />
           <button
             onClick={() => navigator.clipboard.writeText(url)}
-            className="bg-black text-white px-4"
+            className="bg-[#835C57] text-[#FAF0EE] px-4"
           >
             Copy
           </button>

@@ -58,7 +58,7 @@ export default function FeaturedProjects() {
 
         <Link
           href="/portfolio"
-          className="border px-6 py-2 text-[11px] tracking-[0.2em] uppercase hover:bg-black hover:text-white transition"
+          className="border px-6 py-2 text-[11px] tracking-[0.2em] uppercase hover:bg-[#835C57] hover:text-[#FAF0EE] transition"
         >
           See more
         </Link>
@@ -85,7 +85,7 @@ export default function FeaturedProjects() {
             />
 
             <div className="pt-10">
-              <span className="text-xs text-neutral-400">
+              <span className="text-xs text-[#835C57]-400">
                 {project.id}
               </span>
 
@@ -99,7 +99,7 @@ export default function FeaturedProjects() {
 
               <Link
                 href="/portfolio"
-                className="inline-block mt-6 text-xs tracking-wide text-neutral-500 hover:text-black"
+                className="inline-block mt-6 text-xs tracking-wide text-[#835C57]-500 hover:text-[#835C57]"
               >
                 View project
               </Link>
@@ -108,7 +108,7 @@ export default function FeaturedProjects() {
         ))}
       </div>
 
-      <p className="text-center text-xs text-neutral-500 mt-20">
+      <p className="text-center text-xs text-[#835C57]-500 mt-20">
         Head over to portfolio section to check out our other projects.
       </p>
     </section>

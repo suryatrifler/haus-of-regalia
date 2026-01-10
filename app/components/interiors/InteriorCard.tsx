@@ -39,7 +39,7 @@ export default function InteriorCard({
       />
 
       {/* HOVER OVERLAY */}
-      <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition duration-300" />
+      <div className="absolute inset-0 bg-[#835C57]/25 opacity-0 group-hover:opacity-100 transition duration-300" />
 
       {/* HEART */}
       <button
@@ -47,7 +47,7 @@ export default function InteriorCard({
         className="
           absolute top-5 left-5
           flex items-center gap-2
-          text-white text-sm
+          text-[#FAF0EE] text-sm
           opacity-0 group-hover:opacity-100
           transition
         "
@@ -61,7 +61,7 @@ export default function InteriorCard({
         onClick={() => open(window.location.href)}
         className="
           absolute top-5 right-5
-          text-white text-sm
+          text-[#FAF0EE] text-sm
           opacity-0 group-hover:opacity-100
           transition
         "
