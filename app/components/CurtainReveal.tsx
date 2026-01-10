@@ -17,7 +17,7 @@ export default function CurtainReveal({ onComplete }: CurtainProps) {
       onAnimationComplete={onComplete}
     >
       <Image
-        src="/cover-final.jpg"
+        src="/SecondaryCurtain.jpg"
         alt=""
         fill
         priority
