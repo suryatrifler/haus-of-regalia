@@ -10,7 +10,7 @@ export default function Header() {
         {/* LOGO */}
         <div className="relative w-full h-[200px]">
           <Image
-            src="/logo-final.jpg"
+            src="/logo.jpg"
             alt=""
             fill
             priority
