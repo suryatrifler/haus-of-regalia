@@ -15,3 +15,15 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.con-like .like {
+  outline: none;
+}
+
+.con-like .like:focus {
+  outline: none;
+}
+
+.con-like .like:focus-visible {
+  outline: none;
+}

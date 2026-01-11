@@ -1,5 +1,3 @@
-
-
 import { notFound } from "next/navigation";
 import { projects } from "@/data/projects";
 
@@ -10,15 +8,25 @@ import ProjectNarrative from "@/app/components/project/ProjectNarrative";
 import ProjectGallery from "@/app/components/project/ProjectGallery";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
-export default function ProjectPage({ params }: Props) {
-  const project = projects.find(
-    (p) => p.slug === params.slug
-  );
+export default async function ProjectPage({ params }: Props) {
+  const { slug } = await params;
 
-  if (!project) return notFound();
+  console.log("URL slug:", slug);
+  console.log("Projects:", projects);
+
+  const project = projects.find((p) => p.slug === slug);
+
+  if (!project) {
+    return (
+      <div style={{ padding: 40 }}>
+        <h1>PROJECT NOT FOUND</h1>
+        <p>Slug from URL: {slug}</p>
+      </div>
+    );
+  }
 
   return (
     <>

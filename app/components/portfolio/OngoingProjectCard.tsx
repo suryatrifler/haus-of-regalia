@@ -37,7 +37,7 @@ export default function OngoingProjectCard({
       />
 
       {/* HOVER OVERLAY */}
-      <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition" />
+      <div className="absolute inset-0 bg-[#835C57]/30 opacity-0 group-hover:opacity-100 transition" />
 
       {/* TITLE */}
       <p className="absolute bottom-6 left-6 text-white text-sm opacity-0 group-hover:opacity-100 transition">
