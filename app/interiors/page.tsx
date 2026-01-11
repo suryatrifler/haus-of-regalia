@@ -1,12 +1,12 @@
 "use client";
 
-import InteriorsGrid from "@/app/components/interiors/InteriorsGrid";
+import InteriorsMasonry from "@/app/components/interiors/InteriorsMasonry";
 import ShareDialog from "@/app/components/portfolio/ShareDialog";
 
 export default function InteriorsPage() {
   return (
     <>
-      <InteriorsGrid />
+      <InteriorsMasonry />
       <ShareDialog />
     </>
   );

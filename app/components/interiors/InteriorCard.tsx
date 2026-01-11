@@ -3,75 +3,43 @@
 import { useState } from "react";
 import { useShareDialog } from "../portfolio/useShareDialog";
 
-type Props = {
+export default function InteriorCard({
+  image,
+  shareUrl,
+}: {
   image: string;
   shareUrl: string;
-};
-
-export default function InteriorCard({ image, shareUrl }: Props) {
+}) {
   const [liked, setLiked] = useState(false);
   const [count, setCount] = useState(12);
   const openShare = useShareDialog((s) => s.open);
 
-  const toggleLike = () => {
-    setLiked((prev) => !prev);
-    setCount((prev) => (liked ? prev - 1 : prev + 1));
-  };
-
   return (
-    <div className="relative group overflow-hidden">
-      {/* IMAGE */}
+    <div className="relative group">
       <img
         src={image}
         alt=""
-        className="w-full h-full object-cover"
+        className="w-full block"
       />
 
       {/* OVERLAY */}
-      <div
-        className="
-          absolute inset-0
-          bg-[#835C57]/35
-          opacity-0
-          group-hover:opacity-100
-          transition-opacity duration-500
-        "
-      />
+      <div className="absolute inset-0 bg-[#835C57]/35 opacity-0 group-hover:opacity-100 transition duration-500" />
 
-      {/* LIKE — BOTTOM LEFT */}
+      {/* LIKE */}
       <button
-        onClick={toggleLike}
-        className="
-          absolute bottom-4 left-4
-          flex items-center gap-1
-          text-[#FAF0EE]
-          opacity-0
-          group-hover:opacity-100
-          transition-opacity duration-500
-        "
-        aria-label="Like interior"
+        onClick={() => {
+          setLiked(!liked);
+          setCount((c) => (liked ? c - 1 : c + 1));
+        }}
+        className="absolute bottom-4 left-4 text-[#FAF0EE] flex items-center gap-1 opacity-0 group-hover:opacity-100 transition duration-500"
       >
-        <span
-          className={`text-lg ${
-            liked ? "text-red-500" : "text-[#FAF0EE]"
-          }`}
-        >
-          ♥
-        </span>
-        <span className="text-xs">{count}</span>
+        ♥ <span className="text-xs">{count}</span>
       </button>
 
-      {/* SHARE — BOTTOM RIGHT */}
+      {/* SHARE */}
       <button
         onClick={() => openShare(shareUrl)}
-        className="
-          absolute bottom-4 right-4
-          text-[#FAF0EE] text-lg
-          opacity-0
-          group-hover:opacity-100
-          transition-opacity duration-500
-        "
-        aria-label="Share interior"
+        className="absolute bottom-4 right-4 text-[#FAF0EE] text-lg opacity-0 group-hover:opacity-100 transition duration-500"
       >
         ↗
       </button>
